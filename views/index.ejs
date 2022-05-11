@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form action='/products' method='POST' enctype='multipart/form-data'>
+	    <input type='text' name='name' placeholder='name' maxLength='32' minLength='5' required/>
+	    <input type='file' name='img' placeholder='img'  required/>
+	    <input type='number' name='price' min='1'  value='1' required/>
+	    <textarea name='description'></textarea>
+	    <button>add</button>
+    </form>
+    	<% for (var i = 0; i < data.length; i++) { %>
+    		<li>name: <%=data[i].name%></li>
+    		<li>price: <%=data[i].price%></li>
+		<li>img: <img src='/images/<%= data[i].img %>' alt='' width='100%'/></li>
+		<li>description: <%= data[i].description %></li>
+		<li>time: <%= new Date(data[i].timestamps).toLocaleString() %></li>
+	<% } %>
+  </body>
+</html>
